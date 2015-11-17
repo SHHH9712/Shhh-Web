@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W 3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script language="JavaScript" type="text/javascript">
+function checkUserName(){
+    var userName=document.getElementByIdx_x_x("userName");
+    var reg=/^[a-z]*$/gi;
+    if(reg.test(userName.value)){
+       return true;
+    }
+    else{
+       alert("用户名只能是英文!");
+       return false;
+    }
+}
+function checkRealName(){
+    var realName=document.getElementByIdx_x_x("realName");
+    var reg=/^([\u4E00-\u9FA5]|[\uFE30-\uFFA0])*$/gi;
+    if(reg.test(realName.value)){
+     return true;
+    }
+    else{
+       alert("姓名只能是中文!");
+       return false;
+    }
+}
+function checkUserId(){
+    var userID=document.getElementByIdx_x_x("userID");
+    if(!(userID.value.length==15||userID.value.length==18)){
+       alert("身份证只能是15或18位");
+       return false;
+    }
+    var flag=true;
+    for(var i=0;i<userID.value.length;i++){
+       if(((userID.value.charAt(i)>="0") && (userID.value.charAt(i)<="9"))
+              ||userID.value.charAt(i)=="X"){
+           continue;
+       }
+       else{
+           alert("身份证只能是数字或字符X");
+           flag=false;
+           break;
+       }
+    }
+    return flag; 
+}
+function checkEmail(){
+    var email=document.getElementByIdx_x_x("email");
+    if(email.value.indexOf("@")==-1){
+       alert("电子邮件中应包含@字符");
+       return false;
+    }
+    return true;
+}
+function checkPhone(){
+    var phone=document.getElementByIdx_x_x("phone");
+    var flag=true;
+    for(var i=0;i<phone.value.length;i++){
+       if((phone.value.charAt(i)>="0")
+               && (phone.value.charAt(i)<="9")){
+           continue;
+       }
+       else{
+           alert("联系电话只能是数字");
+           flag=false;
+           break;
+       }
+    }
+    return flag; 
+}
+function check(){
+    return checkUserName()&&checkRealName()&&checkUserId()
+    &&checkEmail()&&checkPhone();
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+
+
+<body>
+<form action="RegisterServlet" method="post" onSubmit="return check()">
+
+<div>
+<table>
+    <tr>
+       <td>用户名：</td>
+       <td><input type="text" name="userName" id="userName" size="20"></td>
+    </tr>
+    <tr>
+       <td>密码：</td>
+       <td><input type="password" name="password" id="password"
+           size="20"></td>
+    </tr>
+    <tr>
+       <td>姓名：</td>
+       <td><input type="text" name="realName" id="realName" size="20"></td>
+    </tr>
+    <tr>
+       <td>性别：</td>
+       <td><input type="radio" name="sex" id="sex" value="male">男
+       <input type="radio" name="sex" id="sex" value="female">女</td>
+    </tr>
+    <tr>
+       <td>身份证号码：</td>
+       <td><input type="text" name="userID" id="userID" size="20"></td>
+    </tr>
+    <tr>
+       <td>籍贯：</td>
+       <td><input type="text" name="jiguan" id="jiguan" size="20"></td>
+    </tr>
+    <tr>
+       <td>Email 地址：</td>
+       <td><input type="text" name="email" id="email" size="20"></td>
+    </tr>
+    <tr>
+       <td>联系电话：</td>
+       <td><input type="text" name="phone" id="phone" size="20"></td>
+    </tr>
+</table>
+<input type="submit" value="确定"> <input type="reset" value="重置">
+</form>
+</div>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------
+
+            <form action="RegisterServlet" method="post" onSubmit="return check()">
+                <table>
+                    <tr>
+                        <td>用户名：</td>
+                        <td><input type="text" name="userName" id="userName" size="20"></td>
+                    </tr>
+                    <tr>
+                        <td>密码：</td>
+                        <td><input type="password" name="password" id="password"size="20"></td>
+                    </tr>
+                    <tr>
+                        <td>姓名：</td>
+                        <td><input type="text" name="realName" id="realName" size="20"></td>
+                    </tr>
+                    <tr>
+                        <td>性别：</td>
+                        <td><input type="radio" name="sex" id="sex" value="male">男<input type="radio" name="sex" id="sex" value="female">女</td>
+                    </tr>
+                    <tr>
+                        <td>身份证号码：</td>
+                        <td><input type="text" name="userID" id="userID" size="20"></td>
+                    </tr>
+                    <tr>
+                        <td>籍贯：</td>
+                        <td><input type="text" name="jiguan" id="jiguan" size="20"></td>
+                    </tr>
+                    <tr>
+                        <td>Email 地址：</td>
+                        <td><input type="text" name="email" id="email" size="20"></td>
+                    </tr>
+                    <tr>
+                        <td>联系电话：</td>
+                        <td><input type="text" name="phone" id="phone" size="20"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="确定"> <input type="reset" value="重置">
+            </form>
+----------------------------------------------------------------------------------------------------------------------------
+
+<!-- <!DOCTYPE html PUBLIC "-//W 3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script language="JavaScript" type="text/javascript">
+function check(){
+    var password=document.getElementByIdx_x("password");
+    var userName=document.getElementByIdx_x("userName");
+    var reg=/^[a-z]*$/gi;
+    if(!reg.test(userName.value)){
+       alert("用户名只能是英文!");
+       return false;
+    }
+    else if(password.value==""){
+       alert("密码不能为空");
+       return false;
+    }
+    return true;
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Login</title>
+</head>
+<body>
+<form action="LoginServlet"
+    method="post" onSubmit="return check()">
+    用户登录：
+    <table>
+    <tr><td>用户名：</td>
+    <td><input type="text" name="userName" id="userName" size="20"></td>
+    </tr>
+    <tr><td>密码：</td>
+    <td><input type="password" name="password"id="password" size="20"></td>
+    </tr>
+    </table>
+    <input type="submit" value="确定">
+</form>
+</body>
+</html> -->
